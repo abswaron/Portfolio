@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhishek Karmakar - Portfolio</title>
+    
+    <!-- Open Graph / LinkedIn Sharing Metadata -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Abhishek Karmakar - FinTech & Angular Software Engineer" />
+    <meta property="og:description" content="Professional portfolio of Abhishek Karmakar. Specializing in Angular, FinTech, and Micro-Frontend Architectures at Mindgate Solutions." />
+    <meta property="og:image" content="https://ui-avatars.com/api/?name=Abhishek+Karmakar&background=06b6d4&color=fff&size=512" />
+    <meta property="og:url" content="https://www.linkedin.com/in/abhishekkarmakar31" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                500: '#0ea5e9',
+                600: '#0284c7',
+                900: '#0c4a6e',
+              },
+              cyan: {
+                400: '#22d3ee',
+                500: '#06b6d4',
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spin-slow': 'spin 20s linear infinite',
+              'drift-1': 'drift1 45s linear infinite',
+              'drift-2': 'drift2 50s linear infinite',
+              'drift-3': 'drift3 55s linear infinite',
+              'drift-4': 'drift4 60s linear infinite',
+              'float-reverse': 'floatReverse 20s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              floatReverse: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              drift1: {
+                '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+                '25%': { transform: 'translate(15vw, -10vh) rotate(45deg)' },
+                '50%': { transform: 'translate(30vw, 10vh) rotate(90deg)' },
+                '75%': { transform: 'translate(10vw, 20vh) rotate(45deg)' },
+                '100%': { transform: 'translate(0, 0) rotate(0deg)' },
+              },
+              drift2: {
+                '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+                '33%': { transform: 'translate(-20vw, 15vh) rotate(-30deg)' },
+                '66%': { transform: 'translate(10vw, 25vh) rotate(30deg)' },
+                '100%': { transform: 'translate(0, 0) rotate(0deg)' },
+              },
+              drift3: {
+                '0%': { transform: 'translate(0, 0) scale(1)' },
+                '50%': { transform: 'translate(-25vw, -15vh) scale(1.1) rotate(-15deg)' },
+                '100%': { transform: 'translate(0, 0) scale(1)' },
+              },
+              drift4: {
+                '0%': { transform: 'translate(0, 0)' },
+                '25%': { transform: 'translate(15vw, 20vh) rotate(10deg)' },
+                '50%': { transform: 'translate(-10vw, 15vh) rotate(-10deg)' },
+                '75%': { transform: 'translate(-15vw, -10vh) rotate(10deg)' },
+                '100%': { transform: 'translate(0, 0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .scrollbar-thin::-webkit-scrollbar {
+        width: 6px;
+      }
+      .scrollbar-thin::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      .scrollbar-thin::-webkit-scrollbar-thumb {
+        background-color: #334155;
+        border-radius: 20px;
+      }
+      .glass-card {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-black text-slate-300 antialiased selection:bg-cyan-500 selection:text-black">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
