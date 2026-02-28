@@ -1,12 +1,12 @@
-import { GoogleGenAI, Chat } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 import { RESUME_CONTENT } from "../constants";
 
-let chatSession: Chat | null = null;
+let chatSession: any = null;
 
 const getAiClient = () => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    console.error("API_KEY is missing from environment variables.");
+    console.error("GEMINI_API_KEY is missing from environment variables.");
     return null;
   }
   return new GoogleGenAI({ apiKey });
@@ -17,7 +17,7 @@ export const initializeChat = () => {
   if (!ai) return null;
 
   chatSession = ai.chats.create({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3-flash-preview',
     config: {
       systemInstruction: `You are a helpful and professional AI assistant for Abhishek Karmakar's portfolio website. 
       Your knowledge base is strictly limited to the following resume content:
@@ -49,7 +49,6 @@ export const sendMessageToGemini = async function* (message: string) {
     const result = await chatSession.sendMessageStream({ message });
     
     for await (const chunk of result) {
-       // chunk is a GenerateContentResponse
        if (chunk.text) {
          yield chunk.text;
        }
