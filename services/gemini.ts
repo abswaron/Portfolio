@@ -4,9 +4,13 @@ import { RESUME_CONTENT } from "../constants";
 let chatSession: any = null;
 
 const getAiClient = () => {
-  const apiKey = process.env.GEMINI_API_KEY;
+  // Try multiple possible environment variable names
+  const apiKey = process.env.GEMINI_API_KEY || 
+                 process.env.API_KEY || 
+                 (import.meta as any).env?.VITE_GEMINI_API_KEY;
+                 
   if (!apiKey) {
-    console.error("GEMINI_API_KEY is missing from environment variables.");
+    console.error("Gemini API key is missing from environment variables.");
     return null;
   }
   return new GoogleGenAI({ apiKey });
@@ -17,7 +21,7 @@ export const initializeChat = () => {
   if (!ai) return null;
 
   chatSession = ai.chats.create({
-    model: 'gemini-flash-latest',
+    model: 'gemini-3-flash-preview',
     config: {
       systemInstruction: `You are a helpful and professional AI assistant for Abhishek Karmakar's portfolio website. 
       Your knowledge base is strictly limited to the following resume content:
