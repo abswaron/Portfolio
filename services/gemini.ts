@@ -17,7 +17,7 @@ export const initializeChat = () => {
   if (!ai) return null;
 
   chatSession = ai.chats.create({
-    model: 'gemini-3-flash-preview',
+    model: 'gemini-flash-latest',
     config: {
       systemInstruction: `You are a helpful and professional AI assistant for Abhishek Karmakar's portfolio website. 
       Your knowledge base is strictly limited to the following resume content:
