@@ -1,5 +1,4 @@
 import React from 'react';
-import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Hero } from './components/Hero';
 import { Summary } from './components/Summary';
 import { Skills } from './components/Skills';
@@ -22,7 +21,6 @@ const App: React.FC = () => {
       </footer>
       
       <AiChat />
-      <SpeedInsights />
     </div>
   );
 };

@@ -14,29 +14,29 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
         
         {/* Angular / Shield Icon - Starts Top Right */}
-        <div className="absolute top-[15%] right-[10%] animate-drift-1 text-red-600/50 mix-blend-screen drop-shadow-[0_0_25px_rgba(220,38,38,0.6)]">
+        <div className="absolute top-[15%] right-[10%] animate-float text-red-500/80 mix-blend-screen drop-shadow-[0_0_35px_rgba(239,68,68,0.8)]">
            <svg width="180" height="180" viewBox="0 0 24 24" fill="currentColor">
              <path d="M12 2L2 5.5L3.5 17C3.5 17 12 22 12 22C12 22 20.5 17 20.5 17L22 5.5L12 2Z" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-             <path d="M12 6L6 18H8L9.5 15H14.5L16 18H18L12 6Z" fill="currentColor" className="opacity-70"/>
+             <path d="M12 6L6 18H8L9.5 15H14.5L16 18H18L12 6Z" fill="currentColor" className="opacity-90"/>
            </svg>
         </div>
 
         {/* Code Brackets - Starts Bottom Left */}
-        <div className="absolute bottom-[20%] left-[5%] animate-drift-2 text-cyan-500/40 mix-blend-screen drop-shadow-[0_0_20px_rgba(6,182,212,0.6)]">
+        <div className="absolute bottom-[20%] left-[5%] animate-drift text-cyan-400/80 mix-blend-screen drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]">
            <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
              <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
            </svg>
         </div>
 
         {/* Database - Starts Top Left */}
-        <div className="absolute top-[20%] left-[15%] animate-drift-3 text-blue-500/40 mix-blend-screen drop-shadow-[0_0_20px_rgba(59,130,246,0.6)]">
+        <div className="absolute top-[20%] left-[15%] animate-float delay-700 text-blue-400/70 mix-blend-screen drop-shadow-[0_0_25px_rgba(96,165,250,0.7)]">
            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
            </svg>
         </div>
 
         {/* Circuit - Starts Bottom Right */}
-        <div className="absolute bottom-[10%] right-[20%] animate-drift-4 text-slate-500/30 drop-shadow-[0_0_15px_rgba(148,163,184,0.3)]">
+        <div className="absolute bottom-[10%] right-[20%] animate-drift-4 text-slate-400/50 drop-shadow-[0_0_20px_rgba(148,163,184,0.5)]">
            <svg width="300" height="300" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
              <circle cx="50" cy="50" r="40" strokeDasharray="4 4" />
              <circle cx="50" cy="50" r="25" />
@@ -45,28 +45,28 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Java / Coffee - Starts Middle Right */}
-        <div className="absolute top-[45%] right-[5%] animate-drift-2 delay-1000 text-orange-500/50 mix-blend-screen drop-shadow-[0_0_20px_rgba(249,115,22,0.6)]">
+        <div className="absolute top-[45%] right-[5%] animate-float delay-1000 text-orange-400/70 mix-blend-screen drop-shadow-[0_0_25px_rgba(251,146,60,0.7)]">
            <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor">
-               <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z" fill="currentColor" fillOpacity="0.7"/>
+               <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z" fill="currentColor" fillOpacity="0.8"/>
            </svg>
         </div>
 
         {/* FinTech / Bank - Starts Middle Left */}
-        <div className="absolute top-[45%] left-[5%] animate-drift-1 delay-700 text-emerald-500/40 mix-blend-screen drop-shadow-[0_0_20px_rgba(16,185,129,0.6)]">
+        <div className="absolute top-[45%] left-[5%] animate-drift delay-700 text-emerald-400/70 mix-blend-screen drop-shadow-[0_0_25px_rgba(52,211,153,0.7)]">
             <svg width="140" height="140" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m3-11v11m4-11v11m4-11v11m4-11v11" />
             </svg>
         </div>
 
         {/* Spring Leaf - Starts Top Center Left */}
-        <div className="absolute top-[8%] left-[45%] animate-drift-3 delay-500 text-green-500/40 mix-blend-screen drop-shadow-[0_0_15px_rgba(34,197,94,0.5)]">
+        <div className="absolute top-[8%] left-[45%] animate-float delay-500 text-green-400/70 mix-blend-screen drop-shadow-[0_0_20px_rgba(74,222,128,0.6)]">
              <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C7.03 2 3 6.03 3 11c0 2.8 1.41 5.4 3.75 7.15l-1.42 1.42L6.75 21l1.42-1.42C10.6 21.31 14.6 20.9 17 18.5c2.5-2.5 2.9-6.4 1.4-8.8L21 9l-1.5-1.5-1.7 1.7C15.4 7.7 11.5 8.1 9 10.5c-2.5 2.5-2.1 6.5-0.6 8.9L6.75 17.75C5.05 16.5 4 14.5 4 11c0-4.42 3.58-8 8-8s8 3.58 8 8h1c0-4.97-4.03-9-9-9z" />
              </svg>
         </div>
 
         {/* Terminal - Starts Bottom Center */}
-        <div className="absolute bottom-[15%] left-[40%] animate-drift-4 delay-200 text-slate-300/40 drop-shadow-[0_0_12px_rgba(203,213,225,0.4)]">
+        <div className="absolute bottom-[15%] left-[40%] animate-drift-4 delay-200 text-slate-200/60 drop-shadow-[0_0_15px_rgba(226,232,240,0.5)]">
             <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 17l6-6-6-6M12 19h8" />
             </svg>
