@@ -13,63 +13,136 @@ export const Hero: React.FC = () => {
       {/* Background decoration - Motion Images / Icons */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
         
-        {/* Angular / Shield Icon - Starts Top Right */}
-        <div className="absolute top-[15%] right-[10%] animate-float text-red-500/80 mix-blend-screen drop-shadow-[0_0_35px_rgba(239,68,68,0.8)]">
-           <svg width="180" height="180" viewBox="0 0 24 24" fill="currentColor">
-             <path d="M12 2L2 5.5L3.5 17C3.5 17 12 22 12 22C12 22 20.5 17 20.5 17L22 5.5L12 2Z" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-             <path d="M12 6L6 18H8L9.5 15H14.5L16 18H18L12 6Z" fill="currentColor" className="opacity-90"/>
-           </svg>
+        {/* Angular Icon - Top Right Corner */}
+        <div className="absolute top-[8%] right-[5%] rotate-12 animate-float-slow drop-shadow-[0_0_35px_rgba(221,0,49,0.8)]">
+           <img 
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" 
+             alt="Angular" 
+             width="180" 
+             height="180" 
+             referrerPolicy="no-referrer"
+             className="opacity-80 mix-blend-screen"
+           />
         </div>
 
-        {/* Code Brackets - Starts Bottom Left */}
-        <div className="absolute bottom-[20%] left-[5%] animate-drift text-cyan-400/80 mix-blend-screen drop-shadow-[0_0_30px_rgba(34,211,238,0.8)]">
-           <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-             <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-           </svg>
+        {/* VS Code Icon - Bottom Left Corner */}
+        <div className="absolute bottom-[10%] left-[5%] -rotate-12 animate-drift-fast drop-shadow-[0_0_35px_rgba(0,122,204,0.8)]">
+           <img 
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" 
+             alt="VS Code" 
+             width="200" 
+             height="200" 
+             referrerPolicy="no-referrer"
+             className="opacity-80 mix-blend-screen"
+           />
         </div>
 
-        {/* Database - Starts Top Left */}
-        <div className="absolute top-[20%] left-[15%] animate-float delay-700 text-blue-400/70 mix-blend-screen drop-shadow-[0_0_25px_rgba(96,165,250,0.7)]">
-           <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-           </svg>
+        {/* PostgreSQL Icon - Top Left Area */}
+        <div className="absolute top-[15%] left-[8%] rotate-45 animate-float delay-700 drop-shadow-[0_0_35px_rgba(51,103,145,0.8)]">
+           <img 
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" 
+             alt="PostgreSQL" 
+             width="120" 
+             height="120" 
+             referrerPolicy="no-referrer"
+             className="opacity-80 mix-blend-screen"
+           />
         </div>
 
-        {/* Circuit - Starts Bottom Right */}
-        <div className="absolute bottom-[10%] right-[20%] animate-drift-4 text-slate-400/50 drop-shadow-[0_0_20px_rgba(148,163,184,0.5)]">
-           <svg width="300" height="300" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
-             <circle cx="50" cy="50" r="40" strokeDasharray="4 4" />
-             <circle cx="50" cy="50" r="25" />
-             <path d="M50 10 V25 M50 75 V90 M10 50 H25 M75 50 H90" />
-           </svg>
+        {/* Oracle Icon - Bottom Right Area */}
+        <div className="absolute bottom-[5%] right-[12%] -rotate-45 animate-drift-4 drop-shadow-[0_0_35px_rgba(248,0,0,0.8)]">
+           <img 
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" 
+             alt="Oracle" 
+             width="180" 
+             height="180" 
+             referrerPolicy="no-referrer"
+             className="opacity-80 mix-blend-screen"
+           />
         </div>
 
-        {/* Java / Coffee - Starts Middle Right */}
-        <div className="absolute top-[45%] right-[5%] animate-float delay-1000 text-orange-400/70 mix-blend-screen drop-shadow-[0_0_25px_rgba(251,146,60,0.7)]">
-           <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor">
-               <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z" fill="currentColor" fillOpacity="0.8"/>
-           </svg>
+        {/* Java Icon - Middle Right Edge */}
+        <div className="absolute top-[40%] right-[2%] rotate-[15deg] animate-float-fast delay-1000 drop-shadow-[0_0_35px_rgba(251,146,60,0.8)]">
+           <img 
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
+             alt="Java" 
+             width="120" 
+             height="120" 
+             referrerPolicy="no-referrer"
+             className="opacity-80 mix-blend-screen"
+           />
         </div>
 
-        {/* FinTech / Bank - Starts Middle Left */}
-        <div className="absolute top-[45%] left-[5%] animate-drift delay-700 text-emerald-400/70 mix-blend-screen drop-shadow-[0_0_25px_rgba(52,211,153,0.7)]">
-            <svg width="140" height="140" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m3-11v11m4-11v11m4-11v11m4-11v11" />
-            </svg>
+        {/* Spring Boot Icon - Middle Left Edge */}
+        <div className="absolute bottom-[35%] left-[2%] -rotate-[15deg] animate-drift-slow delay-700 text-green-600/70 drop-shadow-[0_0_35px_rgba(34,197,94,0.8)]">
+           <img 
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" 
+             alt="Spring Boot" 
+             width="140" 
+             height="140" 
+             referrerPolicy="no-referrer"
+             className="opacity-80 mix-blend-screen"
+           />
         </div>
 
-        {/* Spring Leaf - Starts Top Center Left */}
-        <div className="absolute top-[8%] left-[45%] animate-float delay-500 text-green-400/70 mix-blend-screen drop-shadow-[0_0_20px_rgba(74,222,128,0.6)]">
-             <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C7.03 2 3 6.03 3 11c0 2.8 1.41 5.4 3.75 7.15l-1.42 1.42L6.75 21l1.42-1.42C10.6 21.31 14.6 20.9 17 18.5c2.5-2.5 2.9-6.4 1.4-8.8L21 9l-1.5-1.5-1.7 1.7C15.4 7.7 11.5 8.1 9 10.5c-2.5 2.5-2.1 6.5-0.6 8.9L6.75 17.75C5.05 16.5 4 14.5 4 11c0-4.42 3.58-8 8-8s8 3.58 8 8h1c0-4.97-4.03-9-9-9z" />
-             </svg>
+        {/* Linux Icon - Top Center Area */}
+        <div className="absolute top-[2%] left-[55%] rotate-[30deg] animate-float-reverse delay-500 drop-shadow-[0_0_35px_rgba(255,215,0,0.8)]">
+           <img 
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" 
+             alt="Linux" 
+             width="80" 
+             height="80" 
+             referrerPolicy="no-referrer"
+             className="opacity-80 mix-blend-screen"
+           />
         </div>
 
-        {/* Terminal - Starts Bottom Center */}
-        <div className="absolute bottom-[15%] left-[40%] animate-drift-4 delay-200 text-slate-200/60 drop-shadow-[0_0_15px_rgba(226,232,240,0.5)]">
-            <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 17l6-6-6-6M12 19h8" />
-            </svg>
+        {/* Git Icon - Middle Center Left */}
+        <div className="absolute top-[30%] left-[25%] rotate-[25deg] animate-float delay-300 drop-shadow-[0_0_35px_rgba(240,80,50,0.8)]">
+            <img 
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" 
+              alt="Git" 
+              width="100" 
+              height="100" 
+              referrerPolicy="no-referrer"
+              className="opacity-80 mix-blend-screen"
+            />
+        </div>
+
+        {/* TypeScript Icon - Middle Center Right */}
+        <div className="absolute bottom-[25%] right-[30%] -rotate-[15deg] animate-drift delay-1000 drop-shadow-[0_0_35px_rgba(0,122,204,0.8)]">
+            <img 
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" 
+              alt="TypeScript" 
+              width="110" 
+              height="110" 
+              referrerPolicy="no-referrer"
+              className="opacity-80 mix-blend-screen"
+            />
+        </div>
+
+        {/* Node.js Icon - Top Center Right */}
+        <div className="absolute top-[12%] right-[35%] rotate-[10deg] animate-float-slow delay-200 drop-shadow-[0_0_35px_rgba(104,160,99,0.8)]">
+            <img 
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" 
+              alt="Node.js" 
+              width="90" 
+              height="90" 
+              referrerPolicy="no-referrer"
+              className="opacity-80 mix-blend-screen"
+            />
+        </div>
+
+        {/* Docker Icon - Bottom Center Left */}
+        <div className="absolute bottom-[15%] left-[25%] rotate-[-10deg] animate-drift-4 delay-500 drop-shadow-[0_0_35px_rgba(36,150,237,0.8)]">
+            <img 
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" 
+              alt="Docker" 
+              width="130" 
+              height="130" 
+              referrerPolicy="no-referrer"
+              className="opacity-80 mix-blend-screen"
+            />
         </div>
 
       </div>
@@ -110,19 +183,19 @@ export const Hero: React.FC = () => {
 
           <div className="mt-20 pt-8 border-t border-slate-800/50 flex flex-col sm:flex-row gap-8 text-sm text-slate-400 animate-fade-in backdrop-blur-sm inline-block pr-8 rounded-tr-2xl">
              <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-slate-900 rounded-lg text-cyan-500 group-hover:text-cyan-400 group-hover:bg-slate-800 transition-colors ring-1 ring-slate-800">
+                <div className="p-2 bg-slate-900 rounded-lg text-cyan-500/70 drop-shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:text-cyan-400 group-hover:bg-slate-800 transition-colors ring-1 ring-slate-800">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                 </div>
                 <span className="group-hover:text-slate-200 transition-colors font-mono">{CONTACT_INFO.phone}</span>
              </div>
              <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-slate-900 rounded-lg text-cyan-500 group-hover:text-cyan-400 group-hover:bg-slate-800 transition-colors ring-1 ring-slate-800">
+                <div className="p-2 bg-slate-900 rounded-lg text-cyan-500/70 drop-shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:text-cyan-400 group-hover:bg-slate-800 transition-colors ring-1 ring-slate-800">
                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 </div>
                 <span className="group-hover:text-slate-200 transition-colors font-mono">{CONTACT_INFO.email}</span>
              </div>
              <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-slate-900 rounded-lg text-cyan-500 group-hover:text-cyan-400 group-hover:bg-slate-800 transition-colors ring-1 ring-slate-800">
+                <div className="p-2 bg-slate-900 rounded-lg text-cyan-500/70 drop-shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:text-cyan-400 group-hover:bg-slate-800 transition-colors ring-1 ring-slate-800">
                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                 </div>
                 <span className="group-hover:text-slate-200 transition-colors font-mono">{CONTACT_INFO.location}</span>

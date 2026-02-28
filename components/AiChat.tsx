@@ -125,10 +125,13 @@ export const AiChat: React.FC = () => {
                 }`}
               >
                 {msg.isLoading && msg.text === '' ? (
-                   <div className="flex space-x-1 h-5 items-center px-1">
-                     <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></div>
-                     <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-100"></div>
-                     <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-200"></div>
+                   <div className="flex items-center gap-2 px-1 py-0.5">
+                     <span className="text-xs font-medium text-slate-500 animate-pulse">Thinking</span>
+                     <div className="flex space-x-1 items-center">
+                       <div className="w-1 h-1 bg-cyan-500 rounded-full animate-typing-dot"></div>
+                       <div className="w-1 h-1 bg-cyan-500 rounded-full animate-typing-dot [animation-delay:0.2s]"></div>
+                       <div className="w-1 h-1 bg-cyan-500 rounded-full animate-typing-dot [animation-delay:0.4s]"></div>
+                     </div>
                    </div>
                 ) : (
                   msg.text
