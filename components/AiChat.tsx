@@ -59,7 +59,14 @@ export const AiChat: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to query Gemini assistant');
+        let errMsg = 'Failed to query Gemini assistant';
+        try {
+          const errData = await response.json();
+          if (errData && errData.error) {
+            errMsg = errData.error;
+          }
+        } catch (_) {}
+        throw new Error(errMsg);
       }
 
       const reader = response.body?.getReader();
@@ -81,13 +88,20 @@ export const AiChat: React.FC = () => {
           );
         }
       }
-    } catch (error) {
+    } catch (error: any) {
        console.error("AI Error:", error);
        setErrorState("Connection Error");
+       const errorMsgText = error.message || '';
+       const isApiKeyError = errorMsgText.includes("GEMINI_API_KEY") || errorMsgText.includes("API key") || errorMsgText.includes("API_KEY");
+       
+       const responseText = isApiKeyError 
+         ? `**API Key Missing on Vercel / Target Deployment**\n\nTo make the AI assistant work on your live website, please add your Gemini API key securely to your hosting environment variables:\n\n1. Go to your **Vercel Dashboard**.\n2. Open your project, click **Settings** tab -> **Environment Variables**.\n3. Add a new variable named **GEMINI_API_KEY**.\n4. Paste your Gemini API key in the value box.\n5. Click **Redeploy** on Vercel so the environment changes take effect!\n\n*(This keeps your API key safe and hidden from the user's browser)*`
+         : `I apologize, I encountered a temporary connection issue (${errorMsgText}). Please make sure the GEMINI_API_KEY is configured correctly in Settings or Environment Variables.`;
+
        setMessages(prev => 
         prev.map(msg => 
           msg.id === aiMsgId 
-            ? { ...msg, text: "I apologize, I encountered a temporary connection issue. Please make sure the GEMINI_API_KEY is configured correctly in Settings.", isLoading: false } 
+            ? { ...msg, text: responseText, isLoading: false } 
             : msg
         )
       );
