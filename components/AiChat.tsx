@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { sendMessageToGemini } from '../services/gemini';
 import { ChatMessage } from '../types';
 import { MessageSquare, Send, Sparkles, User, RefreshCw, AlertCircle } from 'lucide-react';
 
@@ -39,6 +38,7 @@ export const AiChat: React.FC = () => {
       text: inputText
     };
 
+    const currentHistory = [...messages];
     setMessages(prev => [...prev, userMsg]);
     setInputText('');
     setIsTyping(true);
@@ -47,18 +47,39 @@ export const AiChat: React.FC = () => {
     setMessages(prev => [...prev, { id: aiMsgId, role: 'model', text: '', isLoading: true }]);
 
     try {
-      const stream = sendMessageToGemini(userMsg.text);
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userMsg.text,
+          history: currentHistory.map(m => ({ role: m.role, text: m.text })),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to query Gemini assistant');
+      }
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
       let fullText = '';
 
-      for await (const chunk of stream) {
-        fullText += chunk;
-        setMessages(prev => 
-          prev.map(msg => 
-            msg.id === aiMsgId 
-              ? { ...msg, text: fullText, isLoading: false } 
-              : msg
-          )
-        );
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value, { stream: true });
+          fullText += chunk;
+          setMessages(prev =>
+            prev.map(msg =>
+              msg.id === aiMsgId
+                ? { ...msg, text: fullText, isLoading: false }
+                : msg
+            )
+          );
+        }
       }
     } catch (error) {
        console.error("AI Error:", error);
@@ -84,19 +105,24 @@ export const AiChat: React.FC = () => {
       {/* Dynamic Launcher Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300 transform flex items-center justify-center group ${
+        className={`fixed bottom-6 right-6 z-50 px-5 py-3 rounded-full shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300 transform flex items-center justify-center gap-2 group ${
           isOpen 
-            ? 'bg-zinc-900 rotate-95 text-zinc-100 border border-zinc-800' 
-            : 'bg-gradient-to-tr from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 hover:scale-110 text-white'
+            ? 'bg-zinc-900 border border-zinc-800 text-zinc-100 hover:bg-zinc-800' 
+            : 'bg-gradient-to-tr from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 hover:scale-105 text-white'
         }`}
         aria-label="Toggle AI Assistant"
       >
         {isOpen ? (
-          <span className="text-sm font-semibold p-1 hover:text-red-400">Close</span>
+          <div className="flex items-center gap-2 whitespace-nowrap">
+            <svg className="w-4 h-4 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            <span className="text-xs font-semibold font-mono uppercase tracking-wider">Close</span>
+          </div>
         ) : (
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            <span className="text-xs font-semibold uppercase font-mono tracking-wider hidden sm:inline pr-1">Ask Resume AI</span>
+            <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            <span className="text-xs font-semibold uppercase font-mono tracking-wider hidden sm:inline">Ask Resume AI</span>
           </div>
         )}
       </button>
