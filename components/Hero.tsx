@@ -1,205 +1,182 @@
 import React from 'react';
 import { CONTACT_INFO } from '../constants';
+import { Mail, Phone, MapPin, Terminal, ArrowDown, Activity, Cpu, Code } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-[85vh] flex items-center bg-black overflow-hidden py-20">
-      {/* Background decoration - Glows */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/4"></div>
-      </div>
+    <section className="relative min-h-[90vh] flex items-center bg-zinc-950 overflow-hidden py-16 border-b border-zinc-900">
+      {/* Background Grid Accent */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
+      
+      {/* Soft Ambient Radial Glows */}
+      <div className="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-emerald-900/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-cyan-900/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
-      {/* Background decoration - Motion Images / Icons */}
+      {/* Floating Interactive Background Logos */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
         
-        {/* Angular Icon - Top Right Corner */}
-        <div className="absolute top-[8%] right-[5%] rotate-12 animate-float-slow drop-shadow-[0_0_35px_rgba(221,0,49,0.8)]">
+        {/* Angular Icon - Top Right Area */}
+        <div className="absolute top-[12%] right-[8%] rotate-12 animate-float-slow drop-shadow-[0_0_35px_rgba(221,0,49,0.3)]">
            <img 
              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" 
              alt="Angular" 
-             width="180" 
-             height="180" 
+             width="110" 
+             height="110" 
              referrerPolicy="no-referrer"
-             className="opacity-80 mix-blend-screen"
+             className="opacity-25 mix-blend-screen grayscale hover:grayscale-0 transition-all duration-300"
            />
         </div>
 
-        {/* VS Code Icon - Bottom Left Corner */}
-        <div className="absolute bottom-[10%] left-[5%] -rotate-12 animate-drift-fast drop-shadow-[0_0_35px_rgba(0,122,204,0.8)]">
+        {/* VS Code Icon */}
+        <div className="absolute bottom-[15%] left-[8%] -rotate-12 animate-drift-fast drop-shadow-[0_0_35px_rgba(0,122,204,0.3)]">
            <img 
              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" 
              alt="VS Code" 
-             width="200" 
-             height="200" 
+             width="100" 
+             height="100" 
              referrerPolicy="no-referrer"
-             className="opacity-80 mix-blend-screen"
+             className="opacity-20 mix-blend-screen grayscale hover:grayscale-0 transition-all duration-300"
            />
         </div>
 
-        {/* PostgreSQL Icon - Top Left Area */}
-        <div className="absolute top-[15%] left-[8%] rotate-45 animate-float delay-700 drop-shadow-[0_0_35px_rgba(51,103,145,0.8)]">
+        {/* PostgreSQL Icon */}
+        <div className="absolute top-[18%] left-[10%] rotate-45 animate-float delay-700 drop-shadow-[0_0_35px_rgba(51,103,145,0.3)]">
            <img 
              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" 
              alt="PostgreSQL" 
-             width="120" 
-             height="120" 
-             referrerPolicy="no-referrer"
-             className="opacity-80 mix-blend-screen"
-           />
-        </div>
-
-        {/* Oracle Icon - Bottom Right Area */}
-        <div className="absolute bottom-[5%] right-[12%] -rotate-45 animate-drift-4 drop-shadow-[0_0_35px_rgba(248,0,0,0.8)]">
-           <img 
-             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" 
-             alt="Oracle" 
-             width="180" 
-             height="180" 
-             referrerPolicy="no-referrer"
-             className="opacity-80 mix-blend-screen"
-           />
-        </div>
-
-        {/* Java Icon - Middle Right Edge */}
-        <div className="absolute top-[40%] right-[2%] rotate-[15deg] animate-float-fast delay-1000 drop-shadow-[0_0_35px_rgba(251,146,60,0.8)]">
-           <img 
-             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
-             alt="Java" 
-             width="120" 
-             height="120" 
-             referrerPolicy="no-referrer"
-             className="opacity-80 mix-blend-screen"
-           />
-        </div>
-
-        {/* Spring Boot Icon - Middle Left Edge */}
-        <div className="absolute bottom-[35%] left-[2%] -rotate-[15deg] animate-drift-slow delay-700 text-green-600/70 drop-shadow-[0_0_35px_rgba(34,197,94,0.8)]">
-           <img 
-             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" 
-             alt="Spring Boot" 
-             width="140" 
-             height="140" 
-             referrerPolicy="no-referrer"
-             className="opacity-80 mix-blend-screen"
-           />
-        </div>
-
-        {/* Linux Icon - Top Center Area */}
-        <div className="absolute top-[2%] left-[55%] rotate-[30deg] animate-float-reverse delay-500 drop-shadow-[0_0_35px_rgba(255,215,0,0.8)]">
-           <img 
-             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" 
-             alt="Linux" 
              width="80" 
              height="80" 
              referrerPolicy="no-referrer"
-             className="opacity-80 mix-blend-screen"
+             className="opacity-25 mix-blend-screen grayscale hover:grayscale-0 transition-all duration-300"
            />
         </div>
 
-        {/* Git Icon - Middle Center Left */}
-        <div className="absolute top-[30%] left-[25%] rotate-[25deg] animate-float delay-300 drop-shadow-[0_0_35px_rgba(240,80,50,0.8)]">
-            <img 
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" 
-              alt="Git" 
-              width="100" 
-              height="100" 
-              referrerPolicy="no-referrer"
-              className="opacity-80 mix-blend-screen"
-            />
+        {/* Java Icon */}
+        <div className="absolute top-[45%] right-[5%] rotate-[15deg] animate-float-fast delay-1000 drop-shadow-[0_0_35px_rgba(251,146,60,0.3)]">
+           <img 
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
+             alt="Java" 
+             width="90" 
+             height="90" 
+             referrerPolicy="no-referrer"
+             className="opacity-25 mix-blend-screen grayscale hover:grayscale-0 transition-all duration-300"
+           />
         </div>
 
-        {/* TypeScript Icon - Middle Center Right */}
-        <div className="absolute bottom-[25%] right-[30%] -rotate-[15deg] animate-drift delay-1000 drop-shadow-[0_0_35px_rgba(0,122,204,0.8)]">
+        {/* Spring Boot Icon */}
+        <div className="absolute bottom-[30%] left-[3%] -rotate-[15deg] animate-drift-slow delay-700 drop-shadow-[0_0_35px_rgba(109,179,63,0.3)]">
+           <img 
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" 
+             alt="Spring Boot" 
+             width="100" 
+             height="100" 
+             referrerPolicy="no-referrer"
+             className="opacity-30 mix-blend-screen grayscale hover:grayscale-0 transition-all duration-300"
+           />
+        </div>
+
+        {/* TypeScript Icon */}
+        <div className="absolute bottom-[28%] right-[25%] -rotate-[15deg] animate-drift delay-1000 drop-shadow-[0_0_35px_rgba(0,122,204,0.3)]">
             <img 
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" 
               alt="TypeScript" 
-              width="110" 
-              height="110" 
+              width="75" 
+              height="75" 
               referrerPolicy="no-referrer"
-              className="opacity-80 mix-blend-screen"
+              className="opacity-25 mix-blend-screen grayscale hover:grayscale-0 transition-all duration-300"
             />
         </div>
 
-        {/* Node.js Icon - Top Center Right */}
-        <div className="absolute top-[12%] right-[35%] rotate-[10deg] animate-float-slow delay-200 drop-shadow-[0_0_35px_rgba(104,160,99,0.8)]">
+        {/* Node.js Icon */}
+        <div className="absolute top-[8%] right-[40%] rotate-[10deg] animate-float-slow delay-200 drop-shadow-[0_0_35px_rgba(104,160,99,0.3)]">
             <img 
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" 
               alt="Node.js" 
-              width="90" 
-              height="90" 
+              width="80" 
+              height="80" 
               referrerPolicy="no-referrer"
-              className="opacity-80 mix-blend-screen"
+              className="opacity-20 mix-blend-screen grayscale hover:grayscale-0 transition-all duration-300"
             />
         </div>
-
-        {/* Docker Icon - Bottom Center Left */}
-        <div className="absolute bottom-[15%] left-[25%] rotate-[-10deg] animate-drift-4 delay-500 drop-shadow-[0_0_35px_rgba(36,150,237,0.8)]">
-            <img 
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" 
-              alt="Docker" 
-              width="130" 
-              height="130" 
-              referrerPolicy="no-referrer"
-              className="opacity-80 mix-blend-screen"
-            />
-        </div>
-
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl">
-          <div className="flex items-center gap-4 mb-6 animate-fade-in">
-            <span className="h-[2px] w-12 bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]"></span>
-            <span className="text-cyan-400 font-bold tracking-widest text-sm uppercase">Portfolio</span>
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 mb-8 animate-fade-in text-xs font-mono tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            FULL-STACK FINTECH RESUME
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 text-white tracking-tight leading-none animate-fade-in drop-shadow-2xl">
-            Abhishek <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Karmakar</span>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight leading-tight animate-fade-in">
+            Abhishek <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Karmakar</span>
           </h1>
           
-          <p className="text-2xl text-slate-400 mb-10 font-light max-w-2xl animate-fade-in leading-relaxed border-l-4 border-slate-800 pl-6 backdrop-blur-sm">
-            Software Engineer @MindgateSolutions <br/>
-            Specializing in <span className="font-semibold text-white">FinTech</span> & <span className="font-semibold text-white">Angular Development</span>
+          <p className="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in font-light">
+            Software Engineer specializing in building scalable <span className="text-white font-medium">micro-frontend banking architectures</span>, High-Performance transactional modules, and full-stack software experiences.
           </p>
-          
-          <div className="flex flex-wrap gap-5 animate-fade-in">
+
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-20 animate-fade-in">
             <a 
               href={`mailto:${CONTACT_INFO.email}`}
-              className="px-10 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transform hover:-translate-y-1"
+              className="w-full sm:w-auto px-8 py-3.5 bg-zinc-100 hover:bg-white text-zinc-950 rounded-xl font-semibold transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 text-center text-sm"
             >
-              Contact Me
+              Contact Abhishek
             </a>
             <a 
               href={CONTACT_INFO.linkedin} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="px-10 py-4 bg-transparent border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-cyan-400 rounded-xl font-medium transition-all hover:bg-slate-900/50 backdrop-blur-sm"
+              className="w-full sm:w-auto px-8 py-3.5 bg-zinc-900 hover:bg-zinc-850 text-zinc-300 hover:text-white rounded-xl font-medium border border-zinc-800 hover:border-zinc-700 transition-all hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 text-sm"
             >
+              <svg className="w-4 h-4 text-zinc-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c-2.761 0-5 2.239-5 5s2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
               LinkedIn Profile
             </a>
           </div>
 
-          <div className="mt-20 pt-8 border-t border-slate-800/50 flex flex-col sm:flex-row gap-8 text-sm text-slate-400 animate-fade-in backdrop-blur-sm inline-block pr-8 rounded-tr-2xl">
-             <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-slate-900 rounded-lg text-cyan-500/70 drop-shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:text-cyan-400 group-hover:bg-slate-800 transition-colors ring-1 ring-slate-800">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                </div>
-                <span className="group-hover:text-slate-200 transition-colors font-mono">{CONTACT_INFO.phone}</span>
-             </div>
-             <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-slate-900 rounded-lg text-cyan-500/70 drop-shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:text-cyan-400 group-hover:bg-slate-800 transition-colors ring-1 ring-slate-800">
-                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                </div>
-                <span className="group-hover:text-slate-200 transition-colors font-mono">{CONTACT_INFO.email}</span>
-             </div>
-             <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-slate-900 rounded-lg text-cyan-500/70 drop-shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:text-cyan-400 group-hover:bg-slate-800 transition-colors ring-1 ring-slate-800">
-                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <span className="group-hover:text-slate-200 transition-colors font-mono">{CONTACT_INFO.location}</span>
-             </div>
+          {/* Clean Minimalist Contact Rail */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 rounded-2xl bg-zinc-900/40 border border-zinc-900/80 backdrop-blur-md animate-fade-in text-left">
+            <div className="flex items-center gap-3.5 group">
+              <div className="p-2.5 bg-zinc-950 rounded-lg text-emerald-400 border border-zinc-800 group-hover:border-emerald-500/30 transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.05)]">
+                <Phone className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-zinc-500 font-mono uppercase tracking-wider">Call Directly</span>
+                <span className="text-sm font-medium text-zinc-300 font-mono">{CONTACT_INFO.phone}</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3.5 group">
+              <div className="p-2.5 bg-zinc-950 rounded-lg text-teal-400 border border-zinc-800 group-hover:border-teal-500/30 transition-all duration-300 shadow-[0_0_15px_rgba(20,184,166,0.05)]">
+                <Mail className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col flex-1 overflow-hidden">
+                <span className="text-[10px] text-zinc-500 font-mono uppercase tracking-wider">Email Inquiry</span>
+                <span className="text-sm font-medium text-zinc-300 font-mono truncate">{CONTACT_INFO.email}</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3.5 group">
+              <div className="p-2.5 bg-zinc-950 rounded-lg text-cyan-400 border border-zinc-800 group-hover:border-cyan-500/30 transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.05)]">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-zinc-500 font-mono uppercase tracking-wider">Primary Base</span>
+                <span className="text-sm font-medium text-zinc-300 font-mono">{CONTACT_INFO.location}</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3.5 group">
+              <div className="p-2.5 bg-zinc-950 rounded-lg text-indigo-400 border border-zinc-800 group-hover:border-indigo-500/30 transition-all duration-300 shadow-[0_0_15px_rgba(99,102,241,0.05)]">
+                <Terminal className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-zinc-500 font-mono uppercase tracking-wider">Industry Role</span>
+                <span className="text-sm font-medium text-zinc-300 font-mono">Mindgate Solutions</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

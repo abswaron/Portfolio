@@ -23,7 +23,7 @@ export const initializeChat = () => {
 
   try {
     chatSession = ai.chats.create({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3.5-flash',
       config: {
         systemInstruction: `You are a helpful and professional AI assistant for Abhishek Karmakar's portfolio website. 
         Your knowledge base is strictly limited to the following resume content:

@@ -1,5 +1,8 @@
 {
   "name": "Portfolio - Abhishek Karmakar",
   "description": "Professional portfolio website for Abhishek Karmakar, featuring an AI-powered resume assistant.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
