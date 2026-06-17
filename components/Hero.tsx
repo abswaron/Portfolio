@@ -126,7 +126,7 @@ export const Hero: React.FC = () => {
             <a 
               href={CONTACT_INFO.linkedin} 
               target="_blank" 
-              rel="noopener noreferrer"
+              rel="noopener"
               className="w-full sm:w-auto px-8 py-3.5 bg-zinc-900 hover:bg-zinc-850 text-zinc-300 hover:text-white rounded-xl font-medium border border-zinc-800 hover:border-zinc-700 transition-all hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 text-sm"
             >
               <svg className="w-4 h-4 text-zinc-400" fill="currentColor" viewBox="0 0 24 24">
