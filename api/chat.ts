@@ -1,29 +1,63 @@
 import { GoogleGenAI } from "@google/genai";
-import { RESUME_CONTENT } from "../constants";
 
-export default async function handler(req: any, res: any) {
-  // Support CORS if needed, but since it's same-origin on Vercel, simple handlers are ideal.
+export const config = {
+  runtime: "edge",
+};
+
+const RESUME_CONTENT = `
+ABHISHEK KARMAKAR
+Software Engineer @MindgateSolutions | FinTech | Angular
+Location: Chennai, Tamil Nadu, India
+Contact: 9875491383, abswaron31@gmail.com, linkedin.com/in/abhishekkarmakar31
+
+Summary:
+Experienced Software Engineer in Angular, Front-End development, FinTech, and building scalable micro frontend architectures, delivering scalable and maintainable UI solutions.
+Expertise in key banking modules like Payments, Beneficiaries, Reports, Bulk Transactions, and all phases of the Software Development Life Cycle. Strong in architectural design and client communication.
+Key role in driving technical excellence, optimizing performance, and ensuring consistent outcomes across multiple engineering teams.
+
+Skills:
+Angular (v13–v18), TypeScript, HTML, CSS, Bootstrap, Kendo UI, Java, Spring Boot, Git, Jenkins, Jira, System Design, HLD (High Level Design), LLD (Low Level Design).
+
+Experience:
+1. Mindgate Solutions - Software Engineer
+   September 2022 - Present (3 years 4 months total tenure at company)
+   Chennai, Tamil Nadu, India
+2. Mindgate Solutions - Software Engineering Trainee
+   June 2022 - August 2022 (3 months)
+   Chennai, Tamil Nadu, India
+
+Education:
+SJC institute of technology
+Bachelor of Engineering - BE, Information Technology (2015 - 2019)
+`;
+
+export default async function handler(req: Request) {
   if (req.method !== "POST") {
-    res.setHeader("Allow", ["POST"]);
-    return res.status(405).json({ error: "Method not allowed. Use POST." });
+    return new Response(JSON.stringify({ error: "Method not allowed" }), {
+      status: 405,
+      headers: { "Content-Type": "application/json", "Allow": "POST" },
+    });
   }
 
-  const { message, history } = req.body;
-  
   // Retrieve Gemini API Key from environment variables safely on server-side
   const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY || process.env.VITE_GEMINI_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ 
-      error: "GEMINI_API_KEY is not configured on the server. Please define it in your environment variables." 
+    return new Response(JSON.stringify({ 
+      error: "GEMINI_API_KEY is not configured on your Vercel deployment. Please add a new environment variable named GEMINI_API_KEY with your Google AI Studio API key as the value, and redeploy your project." 
+    }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
     });
   }
 
   try {
+    const { message, history } = await req.json();
+
     const ai = new GoogleGenAI({ 
       apiKey,
       httpOptions: {
         headers: {
-          'User-Agent': 'aistudio-build-vercel',
+          'User-Agent': 'aistudio-build-vercel-edge',
         }
       }
     });
@@ -74,19 +108,41 @@ export default async function handler(req: any, res: any) {
       throw lastError || new Error("All fallback models failed due to high service demand.");
     }
 
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
-    res.setHeader("X-Accel-Buffering", "no");
+    const { readable, writable } = new TransformStream();
+    const writer = writable.getWriter();
+    const encoder = new TextEncoder();
 
-    for await (const chunk of responseStream) {
-      if (chunk.text) {
-        res.write(chunk.text);
+    // Start background stream writing process
+    (async () => {
+      try {
+        for await (const chunk of responseStream) {
+          if (chunk.text) {
+            await writer.write(encoder.encode(chunk.text));
+          }
+        }
+      } catch (err: any) {
+        console.error("Vercel Edge Stream Error:", err);
+        // Do not fail the whole response, write visual indicator
+        await writer.write(encoder.encode(`\n[Connection Error: ${err.message || err}]`));
+      } finally {
+        await writer.close();
       }
-    }
-    res.end();
+    })();
+
+    return new Response(readable, {
+      headers: {
+        "Content-Type": "text/event-stream; charset=utf-8",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "X-Accel-Buffering": "no",
+      },
+    });
+
   } catch (e: any) {
-    console.error("Vercel Serverless API Chat Error:", e);
-    return res.status(500).json({ error: e.message || "Internal server error occurred while retrieving chat response." });
+    console.error("Vercel Edge API Chat Error:", e);
+    return new Response(JSON.stringify({ error: e.message || "An internal error occurred." }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }
