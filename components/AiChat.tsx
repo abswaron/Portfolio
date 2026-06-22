@@ -136,7 +136,7 @@ export const AiChat: React.FC = () => {
         ) : (
           <div className="flex items-center gap-2">
             <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform" />
-            <span className="text-xs font-semibold uppercase font-mono tracking-wider hidden sm:inline">Ask Resume AI</span>
+            <span className="text-xs font-semibold uppercase font-mono tracking-wider hidden sm:inline">Ask Jarvis AI</span>
           </div>
         )}
       </button>
@@ -154,10 +154,10 @@ export const AiChat: React.FC = () => {
              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
              <div>
                 <h3 className="font-bold text-sm text-white flex items-center gap-1.5 font-mono">
-                  abhishek_ai.sh
+                  Jarvis AI
                   <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
                 </h3>
-                <p className="text-[10px] text-zinc-500 font-mono">Gemini Full-Stack Assistant</p>
+                <p className="text-[10px] text-zinc-500 font-mono">Full-Stack Assistant</p>
              </div>
           </div>
           <button 
