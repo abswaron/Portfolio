@@ -1,9 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 
-export const config = {
-  runtime: "edge",
-};
-
 const RESUME_CONTENT = `
 ABHISHEK KARMAKAR
 Software Engineer @MindgateSolutions | FinTech | Angular
@@ -31,33 +27,28 @@ SJC institute of technology
 Bachelor of Engineering - BE, Information Technology (2015 - 2019)
 `;
 
-export default async function handler(req: Request) {
+export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), {
-      status: 405,
-      headers: { "Content-Type": "application/json", "Allow": "POST" },
-    });
+    res.setHeader("Allow", ["POST"]);
+    return res.status(405).json({ error: "Method not allowed. Use POST." });
   }
 
   // Retrieve Gemini API Key from environment variables safely on server-side
   const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY || process.env.VITE_GEMINI_API_KEY;
   if (!apiKey) {
-    return new Response(JSON.stringify({ 
-      error: "GEMINI_API_KEY is not configured on your Vercel deployment. Please add a new environment variable named GEMINI_API_KEY with your Google AI Studio API key as the value, and redeploy your project." 
-    }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
+    return res.status(500).json({ 
+      error: "GEMINI_API_KEY is not configured on your Vercel deployment. Please add an environment variable named GEMINI_API_KEY with your API key as the value in Vercel settings, then redeploy your project." 
     });
   }
 
   try {
-    const { message, history } = await req.json();
+    const { message, history } = req.body || {};
 
     const ai = new GoogleGenAI({ 
       apiKey,
       httpOptions: {
         headers: {
-          'User-Agent': 'aistudio-build-vercel-edge',
+          'User-Agent': 'aistudio-build-vercel-node',
         }
       }
     });
@@ -108,41 +99,27 @@ export default async function handler(req: Request) {
       throw lastError || new Error("All fallback models failed due to high service demand.");
     }
 
-    const { readable, writable } = new TransformStream();
-    const writer = writable.getWriter();
-    const encoder = new TextEncoder();
+    res.writeHead(200, {
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "Cache-Control": "no-cache, no-transform",
+      "Connection": "keep-alive",
+      "X-Accel-Buffering": "no",
+    });
 
-    // Start background stream writing process
-    (async () => {
-      try {
-        for await (const chunk of responseStream) {
-          if (chunk.text) {
-            await writer.write(encoder.encode(chunk.text));
-          }
-        }
-      } catch (err: any) {
-        console.error("Vercel Edge Stream Error:", err);
-        // Do not fail the whole response, write visual indicator
-        await writer.write(encoder.encode(`\n[Connection Error: ${err.message || err}]`));
-      } finally {
-        await writer.close();
+    for await (const chunk of responseStream) {
+      if (chunk.text) {
+        res.write(chunk.text);
       }
-    })();
-
-    return new Response(readable, {
-      headers: {
-        "Content-Type": "text/event-stream; charset=utf-8",
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive",
-        "X-Accel-Buffering": "no",
-      },
-    });
-
+    }
+    res.end();
   } catch (e: any) {
-    console.error("Vercel Edge API Chat Error:", e);
-    return new Response(JSON.stringify({ error: e.message || "An internal error occurred." }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    console.error("Vercel Serverless API Chat Error:", e);
+    // If headers are already written, we send a suffix error. Otherwise, standard 500 error.
+    if (!res.headersSent) {
+      return res.status(500).json({ error: e.message || "An internal error occurred." });
+    } else {
+      res.write(`\n[Connection Error: ${e.message || e}]`);
+      res.end();
+    }
   }
 }
